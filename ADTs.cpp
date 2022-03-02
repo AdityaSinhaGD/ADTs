@@ -7,6 +7,7 @@
 #include "DoublyLinkedList.h"
 #include "CircularQueue.h"
 #include "CircularDeque.h"
+#include "AVLTree.h"
 
 template <typename tdata>
 void printVector2d(const std::vector<std::vector<tdata>>& result) {
@@ -92,6 +93,7 @@ int main()
     }
     */
 
+    /*
     CircularDeque<int> deque(5);
     deque.push_Front(2);
     deque.push_Front(5);
@@ -105,6 +107,16 @@ int main()
     deque.push_Back(13);
     deque.Display();
     std::cout << "\n" << deque.getFront() << "\n" << deque.getRear();
+    */
+
+    AVLTree<int> avlTree;
+    avlTree.Insert(8);
+    avlTree.Insert(7);
+    avlTree.Insert(6);
+    avlTree.Insert(5);
+    avlTree.Insert(4);
+    //avlTree.Insert(3);
+    avlTree.preOrder();
   
 }
 
