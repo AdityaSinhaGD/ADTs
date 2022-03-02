@@ -6,6 +6,7 @@
 #include "LinkedList.h"
 #include "DoublyLinkedList.h"
 #include "CircularQueue.h"
+#include "CircularDeque.h"
 
 template <typename tdata>
 void printVector2d(const std::vector<std::vector<tdata>>& result) {
@@ -63,6 +64,7 @@ int main()
     list.printList();
     */
 
+    /*
     DoublyLinkedList<int> dList;
     dList.InsertEnd(5);
     dList.InsertEnd(6);
@@ -72,7 +74,7 @@ int main()
     dList.Print();
     std::cout << "\n";
     dList.PrintReverse();
-    
+    */
 
     /*
     CircularQueue<int> queue(5);
@@ -89,6 +91,19 @@ int main()
         queue.pop();
     }
     */
+
+    CircularDeque<int> deque(5);
+    deque.push_Front(2);
+    deque.push_Front(5);
+    deque.push_Front(6);
+    deque.push_Front(7);
+    deque.push_Front(9);
+    deque.pop_front();
+    deque.pop_front();
+    deque.pop_front();
+    deque.push_Back(11);
+    deque.push_Back(13);
+    deque.Display();
   
 }
 
