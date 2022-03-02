@@ -104,6 +104,7 @@ int main()
     deque.push_Back(11);
     deque.push_Back(13);
     deque.Display();
+    std::cout << "\n" << deque.getFront() << "\n" << deque.getRear();
   
 }
 
