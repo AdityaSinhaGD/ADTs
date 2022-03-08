@@ -115,6 +115,8 @@ int main()
     avlTree.Insert(6);
     avlTree.Insert(5);
     avlTree.Insert(4);
+    //avlTree.Delete(6);
+    avlTree.Delete(8);
     //avlTree.Insert(3);
     avlTree.preOrder();
   

@@ -45,6 +45,19 @@ private:
 		return (getHeight(node->left) - getHeight(node->right));
 	}
 
+	TreeNode* getMinNode(TreeNode* root) {
+		TreeNode* current = root;
+		if (current == nullptr) {
+			return current;
+		}
+
+		while (current->left != nullptr) {
+			current = current->left;
+		}
+
+		return current;
+	}
+
 	TreeNode* rightRotate(TreeNode* y) {
 		TreeNode* x = y->left;
 		y->left = x->right;
@@ -105,6 +118,69 @@ private:
 		return root;
 	}
 
+	TreeNode* DeleteFromAVLTree(TreeNode* root, const tData& _val) {
+
+		if (root == nullptr) {
+			return root;
+		}
+
+		if (root->val > _val) {
+			root->left = DeleteFromAVLTree(root->left, _val);
+		}
+		else if (root->val < _val) {
+			root->right = DeleteFromAVLTree(root->right, _val);
+		}
+		else { //Found node to delete
+			if (root->left == nullptr && root->right == nullptr) {
+				delete root;
+				root = nullptr;
+			}
+			else if (root->right == nullptr) {
+				TreeNode* temp = root;
+				root = root->left;
+				delete temp;
+			}
+			else if (root->left == nullptr) {
+				TreeNode* temp = root;
+				root = root->right;
+				delete temp;
+			}
+			else {
+				TreeNode* temp = getMinNode(root->right);
+				root->val = temp->val;
+				root->right = DeleteFromAVLTree(root->right, temp->val);
+			}
+		}
+
+		if (root == nullptr) {
+			return root;
+		}
+
+		root->height = std::max(getHeight(root->left), getHeight(root->right)) + 1;
+		int balanceFactor = getBalanceFactor(root);
+
+		if (balanceFactor > 1 && getBalanceFactor(root->left) >= 0) {
+			return rightRotate(root);
+		}
+
+		if (balanceFactor > 1 && getBalanceFactor(root->left) < 0) {
+			root->left = leftRotate(root->left);
+			return rightRotate(root);
+		}
+
+		if (balanceFactor < -1 && getBalanceFactor(root->right) <= 0) {
+			return leftRotate(root);
+		}
+
+		if (balanceFactor < -1 && getBalanceFactor(root->right) > 0) {
+			root->right = rightRotate(root->right);
+			return leftRotate(root);
+		}
+
+		return root;
+
+	}
+
 	void preorderTraversal(TreeNode* root) {
 		if (root == nullptr) {
 			return;
@@ -117,6 +193,10 @@ private:
 public:
 	void Insert(const tData& val) {
 		root = InsertInAVLTree(root, val);
+	}
+
+	void Delete(const tData& val) {
+		root = DeleteFromAVLTree(root, val);
 	}
 
 	void preOrder() {
