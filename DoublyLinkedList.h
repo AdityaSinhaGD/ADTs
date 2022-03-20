@@ -72,6 +72,7 @@ public:
 
 		newNode->next = head;
 		head->prev = newNode;
+		head = newNode;
 
 	}
 
