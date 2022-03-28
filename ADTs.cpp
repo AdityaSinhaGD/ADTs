@@ -8,6 +8,7 @@
 #include "CircularQueue.h"
 #include "CircularDeque.h"
 #include "AVLTree.h"
+#include "MinHeap.h"
 
 template <typename tdata>
 void printVector2d(const std::vector<std::vector<tdata>>& result) {
@@ -109,6 +110,7 @@ int main()
     std::cout << "\n" << deque.getFront() << "\n" << deque.getRear();
     */
 
+    /*
     AVLTree<int> avlTree;
     avlTree.Insert(8);
     avlTree.Insert(7);
@@ -119,7 +121,20 @@ int main()
     avlTree.Delete(8);
     //avlTree.Insert(3);
     avlTree.preOrder();
-  
+    */
+
+    MinHeap<float> minHeap(5);
+    minHeap.push(4.5f);
+    minHeap.push(1.4f);
+    minHeap.push(-9.f);
+    minHeap.push(41.f);
+    minHeap.push(-31.f);
+    while (!minHeap.Empty()) {
+        float val = minHeap.top();
+        minHeap.pop();
+        std::cout << val << "\n";
+    }
+
 }
 
 
