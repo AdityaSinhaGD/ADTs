@@ -27,7 +27,7 @@ private:
 		if (root->val > val) {
 			root->left = InsertIntoTree(root->left, val);
 		}
-		else {
+		else if(root->val < val) {
 			root->right = InsertIntoTree(root->right, val);
 		}
 

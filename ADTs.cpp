@@ -9,6 +9,7 @@
 #include "CircularDeque.h"
 #include "AVLTree.h"
 #include "MinHeap.h"
+#include "Test.h"
 
 template <typename tdata>
 void printVector2d(const std::vector<std::vector<tdata>>& result) {
@@ -123,6 +124,7 @@ int main()
     avlTree.preOrder();
     */
 
+    /*
     MinHeap<float> minHeap(5);
     minHeap.push(4.5f);
     minHeap.push(1.4f);
@@ -134,6 +136,11 @@ int main()
         minHeap.pop();
         std::cout << val << "\n";
     }
+    */
+
+    test a;
+    std::cout << sizeof(a);
+
 
 }
 
